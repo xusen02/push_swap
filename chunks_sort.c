@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_h"
+#include "push_swap.h"
 
 static int get_bucket_size(int size)
 {
@@ -23,13 +23,36 @@ static int get_bucket_size(int size)
 
 static void push_back_to_a(t_node **stack_a, t_node **stack_b)
 {
-    int     size;
-    int     max_pos;
+    int     target_pos;
+    int     size_a;
 
     while (*stack_b != NULL)
     {
-        size = get_stack_size(*stack_b);
-        max_pos = get
+        size_a = get_stack_size(*stack_a);
+        
+        // 1. Find where the top of stack_b belongs in stack_a
+        target_pos = get_insertion_pos(*stack_a, (*stack_b)->index);
+
+        // 2. Rotate stack_a to bring that target position to the top
+        if (target_pos <= size_a / 2)
+        {
+            while (target_pos > 0)
+            {
+                ra(stack_a);
+                target_pos--;
+            }
+        }
+        else
+        {
+            while (target_pos < size_a)
+            {
+                rra(stack_a);
+                target_pos++;
+            }
+        }
+
+        // 3. Push the element from B to A
+        pa(stack_a, stack_b);
     }
 }
 
@@ -57,30 +80,28 @@ void    normalize_index(t_node **stack)
     }
 }
 
-void    chunk_sort(t_node **stack_a, t_node **stack_b)
+void    chunks_sort(t_node **stack_a, t_node **stack_b)
 {
     int     bucket_size;
     int     min;
     int     max;
 
-    if (!stack_a || !*stack_a || get_stack_size(*stack_a) <= 1)
-        return ;
-    bucket_size = get_bucket_size(get_stack_size(*stack_a));
+    bucket_size = get_bucket_size(get_stack_size(stack_a));
     min = 0;
     max = bucket_size;
     while (get_stack_size(*stack_a) > 5)
     {
-        if ((*stack_a)->index <= max)
+        if((*stack_a)->index <= max)
         {
             pb(stack_a, stack_b);
-            if ((*stack_b)->index < min + (bucket_size / 2))
+            if((*stack_b)->index < min + (bucket_size/ 2))
                 rb(stack_b);
-            min++;
+            min++;;
             max++;
         }
         else
             ra(stack_a);
     }
-    sort_five(stack_a);
+    sort_five(stack_a, stack_b);
     push_back_to_a(stack_a, stack_b);
 }

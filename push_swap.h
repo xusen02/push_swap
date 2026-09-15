@@ -67,5 +67,6 @@ void		do_ss(t_node **stack_a, t_node **stack_b);
 void		do_rr(t_node **stack_a, t_node **stack_b);
 
 void		selection_sort(t_node **a, t_node **b);
+void        chunks_sort(t_node **stack_a, t_node **stack_b);
 
 #endif

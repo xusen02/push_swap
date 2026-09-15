@@ -1,5 +1,5 @@
 # push_swap
-This project has been created as part of the 42 curriculum by [txu-sen], [zyeo]
+This project has been created as part of the 42 curriculum by [txu-sen]
 ## Description
 
 `push_swap` is an algorithmic project that challenges you to sort a stack of integers using a restricted set of stack operations with the absolute minimum number of moves.
@@ -10,7 +10,7 @@ This project has been created as part of the 42 curriculum by [txu-sen], [zyeo]
 * **Operations:** You can manipulate elements using pushes (`pa`, `pb`), swaps (`sa`, `sb`, `ss`), rotations (`ra`, `rb`, `rr`), and reverse rotations (`rra`, `rrb`, `rrr`).
 * **Algorithmic Complexity:**
 * **Small Stacks ($n \le 5$):** Handled via optimized hardcoded sorting routines or sorting networks.
-* **Large Stacks ($n > 5$):** Implemented using cost-analysis / chunk_sort-algorithm, selection_sort-algorithm and quick_sort algorithm strategies where elements are evaluated for the cheapest insertion cost into stack `b` and back, minimizing combined rotational moves (`rr`, `rrr`).
+* **Large Stacks ($n > 5$):** Implemented using cost-analysis / Turk-algorithm strategies where elements are evaluated for the cheapest insertion cost into stack `b` and back, minimizing combined rotational moves (`rr`, `rrr`).
 
 
 

@@ -27,7 +27,8 @@ SRC =   main.c \
 		selection_sort.c \
         write_command_both.c \
         write_command_a.c \
-        write_command_b.c
+        write_command_b.c \
+        chunks_sort.c \
 
 OBJ = $(SRC:.c=.o)
 

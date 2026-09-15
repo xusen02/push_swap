@@ -78,6 +78,6 @@ int pick_swap(t_node **stack_a, t_node **stack_b)
     else if (size <= 5)
         sort_five(stack_a, stack_b);
 	else
-		selection_sort(stack_a, stack_b);
+		chunks_sort(stack_a, stack_b);
     return (1);
 }
