@@ -97,3 +97,28 @@ void	normalize_index(t_node **stack)
 		curr = curr->down;
 	}
 }
+
+double	compute_disorder(t_node **stack_a)
+{
+	double	error;
+	double	pairs;
+	t_node	*current;
+	t_node	*compare;
+
+	error = 0;
+	pairs = 0;
+	current = *stack_a;
+	while (current)
+	{
+		compare = current->down;
+		while (compare)
+		{
+			pairs++;
+			if (current->nbr > compare->nbr)
+				error++;
+			compare = compare->down;
+		}
+		current = current->down;
+	}
+	return (error / pairs);
+}
