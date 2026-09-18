@@ -42,11 +42,14 @@ int		find_max(t_node *a);
 int		find_min(t_node *a);
 int		find_min_index(t_node *stack);
 int		find_max_index(t_node *stack);
+double	compute_disorder(t_node **stack_a);
 void	normalize_index(t_node **stack);
 void	sort_three(t_node **stack_a);
 void	sort_five(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node **a, t_node **b);
 void	adaptive_sort(t_node **a, t_node **b);
+void	selection_sort(t_node **a, t_node **b);
+void	chunks_sort(t_node **stack_a, t_node **stack_b);
 
 /* Operations */
 void	sa(t_node **stack_a);
@@ -72,7 +75,6 @@ void	do_rrr(t_node **stack_a, t_node **stack_b);
 void	do_ss(t_node **stack_a, t_node **stack_b);
 void	do_rr(t_node **stack_a, t_node **stack_b);
 
-void	selection_sort(t_node **a, t_node **b);
-void	chunks_sort(t_node **stack_a, t_node **stack_b);
+
 
 #endif
