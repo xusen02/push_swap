@@ -3,29 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: txu-sen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zyeo <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/18 11:27:03 by txu-sen           #+#    #+#             */
-/*   Updated: 2026/09/18 11:27:07 by txu-sen          ###   ########.fr       */
+/*   Created: 2026/09/18 13:02:57 by zyeo              #+#    #+#             */
+/*   Updated: 2026/09/18 13:02:58 by zyeo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	adaptive_sort(t_node **a, t_node **b)
 {
-	int	size;
+	double	disorder;
 
 	if (!a || !*a)
 		return ;
-	size = get_stack_size(*a);
-	if (size <= 3)
-		sort_three(a);
-	else if (size <= 5)
-		sort_five(a, b);
-	else if (size <= 10)
+	disorder = compute_disorder(a);
+	if (disorder < 0.2)
 		selection_sort(a, b);
-	else if (size <= 150)
+	else if (disorder < 0.5)
 		chunks_sort(a, b);
 	else
 		radix_sort(a, b);
