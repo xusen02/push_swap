@@ -9,6 +9,7 @@
 /*   Updated: 2026/09/02 15:33:23 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	store_in(t_node *new_node, t_node **tung_tung)
@@ -60,39 +61,39 @@ int	in_nbr(int argc, char **argv, t_node **stack_a)
 	return (0);
 }
 
-int get_stack_size(t_node *stack)
+int	get_stack_size(t_node *stack)
 {
-    int     size;
+	int	size;
 
-    size = 0;
-    while (stack)
-    {
-        size ++;
-        stack = stack->down;
-    }
-    return (size);
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->down;
+	}
+	return (size);
 }
 
-void    normalize_index(t_node **stack)
+void	normalize_index(t_node **stack)
 {
-    t_node  *curr;
-    t_node  *compare;
-    int     index;
+	t_node	*curr;
+	t_node	*compare;
+	int		index;
 
-    if (!stack || !*stack)
-        return ;
-    curr = *stack;
-    while(curr != NULL)
-    {
-        compare = *stack;
-        index = 0;
-        while(compare != NULL)
-        {
-            if (curr->nbr > compare->nbr)
-                index++;
-            compare = compare->down;
-        }
-        curr->index = index;
-        curr = curr->down;
-    }
+	if (!stack || !*stack)
+		return ;
+	curr = *stack;
+	while (curr != NULL)
+	{
+		compare = *stack;
+		index = 0;
+		while (compare != NULL)
+		{
+			if (curr->nbr > compare->nbr)
+				index++;
+			compare = compare->down;
+		}
+		curr->index = index;
+		curr = curr->down;
+	}
 }

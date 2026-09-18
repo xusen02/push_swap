@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_command_b.c                             :+:      :+:    :+:   */
+/*   push_swap_command_b.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txu-sen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,27 +9,28 @@
 /*   Updated: 2026/09/07 11:57:38 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	do_rrb(t_node **stack)
 {
 	t_node	*end;
 	t_node	*last;
-    t_node  *head;
+	t_node	*head;
 
 	if (!stack || !(*stack) || !(*stack)->down)
 		return ;
-    head = *stack;
+	head = *stack;
 	end = NULL;
-    last = *stack;
-    while (last->down)
-    {
-        end = last;
-        last = last->down;
-    }
-    *stack = last;
-    last->down = head;
-    end->down = NULL;
+	last = *stack;
+	while (last->down)
+	{
+		end = last;
+		last = last->down;
+	}
+	*stack = last;
+	last->down = head;
+	end->down = NULL;
 }
 
 void	do_sb(t_node **stack)

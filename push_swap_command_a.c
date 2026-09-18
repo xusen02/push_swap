@@ -6,9 +6,10 @@
 /*   By: txu-sen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 15:33:35 by txu-sen           #+#    #+#             */
-/*   Updated: 2026/09/02 15:33:36 by txu-sen          ###   ########.fr       */
+/*   Updated: 2026/09/18 11:52:45 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	do_sa(t_node **stack)
@@ -38,21 +39,21 @@ void	do_rra(t_node **stack)
 {
 	t_node	*end;
 	t_node	*last;
-    t_node  *head;
+	t_node	*head;
 
 	if (!stack || !(*stack) || !(*stack)->down)
 		return ;
-    head = *stack;
+	head = *stack;
 	end = NULL;
-    last = *stack;
-    while (last->down)
-    {
-        end = last;
-        last = last->down;
-    }
-    *stack = last;
-    last->down = head;
-    end->down = NULL;
+	last = *stack;
+	while (last->down)
+	{
+		end = last;
+		last = last->down;
+	}
+	*stack = last;
+	last->down = head;
+	end->down = NULL;
 }
 
 void	do_ra(t_node **stack)
@@ -70,4 +71,3 @@ void	do_ra(t_node **stack)
 	last->down = first;
 	first->down = NULL;
 }
-
