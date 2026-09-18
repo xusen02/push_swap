@@ -28,7 +28,6 @@ void	radix_sort(t_node **a, t_node **b)
 	int	counter1;
 	int	counter2;
 
-	normalize_index(a);
 	max_bit_len = bit_len_finder(get_stack_size(*a) - 1);
 	counter1 = 0;
 	while (counter1 < max_bit_len)
