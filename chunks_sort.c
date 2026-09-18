@@ -9,99 +9,93 @@
 /*   Updated: 2026/09/07 13:04:50 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-static int get_bucket_size(int size)
+static int  get_chunk_size(int size)
 {
-	if (size <= 100)
-		return (20);
-	if (size <= 500)
-		return (40);
-	return (5);
+    if (size <= 100)
+        return (15);
+    return (35);
+}
+
+static void final_rotate_a(t_node **stack_a)
+{
+    int min_pos;
+    int size_a;
+
+    size_a = get_stack_size(*stack_a);
+    min_pos = find_min_index(*stack_a);
+    if (min_pos <= size_a / 2)
+    {
+        while (min_pos > 0)
+        {
+            ra(stack_a);
+            min_pos--;
+        }
+    }
+    else
+    {
+        while (min_pos < size_a)
+        {
+            rra(stack_a);
+            min_pos++;
+        }
+    }
 }
 
 static void push_back_to_a(t_node **stack_a, t_node **stack_b)
 {
-    int     target_pos;
-    int     size_a;
+    int max_pos;
+    int size_b;
 
     while (*stack_b != NULL)
     {
-        size_a = get_stack_size(*stack_a);
-        
-        // 1. Find where the top of stack_b belongs in stack_a
-        target_pos = get_insertion_pos(*stack_a, (*stack_b)->index);
-
-        // 2. Rotate stack_a to bring that target position to the top
-        if (target_pos <= size_a / 2)
+        size_b = get_stack_size(*stack_b);
+        max_pos = find_max_index(*stack_b);
+        if (max_pos <= size_b / 2)
         {
-            while (target_pos > 0)
+            while (max_pos > 0)
             {
-                ra(stack_a);
-                target_pos--;
+                rb(stack_b);
+                max_pos--;
             }
         }
         else
         {
-            while (target_pos < size_a)
+            while (max_pos < size_b)
             {
-                rra(stack_a);
-                target_pos++;
+                rrb(stack_b);
+                max_pos++;
             }
         }
-
-        // 3. Push the element from B to A
         pa(stack_a, stack_b);
-    }
-}
-
-void    normalize_index(t_node **stack)
-{
-    t_node  *curr;
-    t_node  *compare;
-    int     index;
-
-    if (!stack || !*stack)
-        return ;
-    curr = *stack;
-    while(*curr)
-    {
-        compare = *stack;
-        index = 0;
-        while(*compare)
-        {
-            if (curr->nbr > compare->nbr)
-                index++;
-            compare = compare->down;
-        }
-        curr->index = index;
-        curr = curr->down;
     }
 }
 
 void    chunks_sort(t_node **stack_a, t_node **stack_b)
 {
-    int     bucket_size;
-    int     min;
-    int     max;
+    int size;
+    int chunk_size;
+    int min;
+    int max;
 
-    bucket_size = get_bucket_size(get_stack_size(stack_a));
+    size = get_stack_size(*stack_a);
+    chunk_size = get_chunk_size(size);
     min = 0;
-    max = bucket_size;
-    while (get_stack_size(*stack_a) > 5)
+    max = chunk_size;
+    while (*stack_a != NULL)
     {
-        if((*stack_a)->index <= max)
+        if ((*stack_a)->index < max)
         {
             pb(stack_a, stack_b);
-            if((*stack_b)->index < min + (bucket_size/ 2))
+            if ((*stack_b)->index < (min + max) / 2)
                 rb(stack_b);
-            min++;;
+            min++;
             max++;
         }
         else
             ra(stack_a);
     }
-    sort_five(stack_a, stack_b);
     push_back_to_a(stack_a, stack_b);
+    final_rotate_a(stack_a);
 }

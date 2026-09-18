@@ -9,7 +9,6 @@
 /*   Updated: 2026/09/02 15:33:36 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	do_rrr(t_node **stack_a, t_node **stack_b)

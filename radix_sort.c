@@ -1,29 +1,5 @@
 #include "push_swap.h"
 
-void    normalize_index(t_node **stack)
-{
-    t_node  *curr;
-    t_node  *compare;
-    int     index;
-
-    if (!stack || !*stack)
-        return ;
-    curr = *stack;
-    while(curr)
-    {
-        compare = *stack;
-        index = 0;
-        while(compare)
-        {
-            if (curr->nbr > compare->nbr)
-                index++;
-            compare = compare->down;
-        }
-        curr->index = index;
-        curr = curr->down;
-    }
-}
-
 static int bit_len_finder(int max)
 {
     int len;

@@ -9,10 +9,9 @@
 /*   Updated: 2026/09/07 13:04:50 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-void sort_three(t_node **stack_a)
+void    sort_three(t_node **stack_a)
 {
     int max;
 
@@ -27,7 +26,7 @@ void sort_three(t_node **stack_a)
         sa(stack_a);
 }
 
-void sort_five(t_node **stack_a, t_node **stack_b)
+void    sort_five(t_node **stack_a, t_node **stack_b)
 {
     int min_index;
     int size;

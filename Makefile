@@ -29,6 +29,8 @@ SRC =   main.c \
         write_command_a.c \
         write_command_b.c \
         chunks_sort.c \
+        radix_sort.c \
+        adaptive_sort.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: txu-sen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/02 15:33:20 by txu-sen           #+#    #+#             */
+/*   Updated: 2026/09/02 15:33:23 by txu-sen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 int	store_in(t_node *new_node, t_node **tung_tung)
@@ -62,22 +73,26 @@ int get_stack_size(t_node *stack)
     return (size);
 }
 
-int pick_swap(t_node **stack_a, t_node **stack_b)
+void    normalize_index(t_node **stack)
 {
-    int size;
+    t_node  *curr;
+    t_node  *compare;
+    int     index;
 
-    if (!stack_a || !*stack_a)
-        return (0);
-    size = get_stack_size(*stack_a);
-    if (size == 1)
-        return (1);
-    else if (size == 2 && (*stack_a)->nbr > (*stack_a)->down->nbr)
-        sa(stack_a);
-    else if (size == 3)
-        sort_three(stack_a);
-    else if (size <= 5)
-        sort_five(stack_a, stack_b);
-	else
-		chunks_sort(stack_a, stack_b);
-    return (1);
+    if (!stack || !*stack)
+        return ;
+    curr = *stack;
+    while(curr != NULL)
+    {
+        compare = *stack;
+        index = 0;
+        while(compare != NULL)
+        {
+            if (curr->nbr > compare->nbr)
+                index++;
+            compare = compare->down;
+        }
+        curr->index = index;
+        curr = curr->down;
+    }
 }

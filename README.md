@@ -1,19 +1,8 @@
 # push_swap
-This project has been created as part of the 42 curriculum by [txu-sen], [zyeo]
+This project has been created as part of the 42 curriculum by [txu-sen]
 ## Description
 
 `push_swap` is an algorithmic project that challenges you to sort a stack of integers using a restricted set of stack operations with the absolute minimum number of moves.
-
-### Core Concepts & Strategy
-
-* **Two Stacks:** You begin with stack `a` containing a randomized list of unique integers and an empty stack `b`.
-* **Operations:** You can manipulate elements using pushes (`pa`, `pb`), swaps (`sa`, `sb`, `ss`), rotations (`ra`, `rb`, `rr`), and reverse rotations (`rra`, `rrb`, `rrr`).
-* **Algorithmic Complexity:**
-* **Small Stacks ($n \le 5$):** Handled via optimized hardcoded sorting routines or sorting networks.
-* **Large Stacks ($n > 5$):** Implemented using cost-analysis / Turk-algorithm strategies where elements are evaluated for the cheapest insertion cost into stack `b` and back, minimizing combined rotational moves (`rr`, `rrr`).
-
-
-
 ---
 
 ## Instructions
@@ -81,4 +70,4 @@ Helpful links, documentation, and conceptual guides for mastering `push_swap`:
 * **Official Documentation:**
 * 42 Subject PDF (Internal curriculum document detailing error management, edge cases, and mandatory norms).
 """
-3. **Resources:** Provides curated links to popular guides (such as the Turk algorithm guide), visualizers, and automated third-party tes
+3. **Resources:** Provides curated links to popular guides, visualizers, and automated third-party tes

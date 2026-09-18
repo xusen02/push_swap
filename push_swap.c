@@ -9,7 +9,6 @@
 /*   Updated: 2026/09/01 12:08:01 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 int push_swap(int argc, char **argv, t_node **stack_a)
@@ -27,8 +26,8 @@ int push_swap(int argc, char **argv, t_node **stack_a)
         free_stack(stack_a);
         return (0);
     }
-
-    pick_swap(stack_a, &stack_b);
+    normalize_index(stack_a);
+    adaptive_sort(stack_a, &stack_b);
     free_stack(stack_a);
     free_stack(&stack_b);
     return (0);

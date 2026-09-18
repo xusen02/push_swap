@@ -9,7 +9,6 @@
 /*   Updated: 2026/09/07 13:04:50 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 int is_sorted(t_node *a)
@@ -57,25 +56,49 @@ int find_min(t_node *a)
     return (min);
 }
 
-int find_min_index(t_node *a)
+int find_min_index(t_node *stack)
 {
     int min;
     int index;
     int i;
 
-    if (!a)
+    if (!stack)
         return (0);
-    min = a->nbr;
+    min = stack->nbr;
     index = 0;
     i = 0;
-    while (a)
+    while (stack)
     {
-        if (a->nbr < min)
+        if (stack->nbr < min)
         {
-            min = a->nbr;
+            min = stack->nbr;
             index = i;
         }
-        a = a->down;
+        stack = stack->down;
+        i++;
+    }
+    return (index);
+}
+
+int find_max_index(t_node *stack)
+{
+    int max;
+    int index;
+    int i;
+
+    if (!stack)
+        return (0);
+    max = stack->nbr;
+    index = 0;
+    i = 0;
+    while (stack)
+    {
+        if (stack->nbr > max)
+        {
+            max = stack->nbr;
+            index = i;
+        }
+        stack = stack->down;
         i++;
     }
     return (index);
