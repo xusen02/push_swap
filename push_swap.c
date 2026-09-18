@@ -30,19 +30,19 @@ static int	get_sort_type(int *argc, char ***argv)
 {
 	if (*argc <= 1)
 		return (0);
-	if (is_match((*argv)[1], "simple"))
+	if (is_match((*argv)[1], "--simple"))
 	{
 		(*argv)++;
 		(*argc)--;
 		return (1);
 	}
-	if (is_match((*argv)[1], "medium"))
+	if (is_match((*argv)[1], "--medium"))
 	{
 		(*argv)++;
 		(*argc)--;
 		return (2);
 	}
-	if (is_match((*argv)[1], "complex"))
+	if (is_match((*argv)[1], "--complex"))
 	{
 		(*argv)++;
 		(*argc)--;
