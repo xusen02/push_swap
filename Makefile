@@ -30,7 +30,9 @@ SRC =   main.c \
         write_command_b.c \
         chunks_sort.c \
         radix_sort.c \
-        adaptive_sort.c
+        adaptive_sort.c \
+        bench_writer.c \
+        bench_helper.c
 
 OBJ = $(SRC:.c=.o)
 

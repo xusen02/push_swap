@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	adaptive_sort(t_node **a, t_node **b)
+void	adaptive_sort(t_node **a, t_node **b, t_bench *bench)
 {
 	double	disorder;
 
@@ -19,9 +19,9 @@ void	adaptive_sort(t_node **a, t_node **b)
 		return ;
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
-		selection_sort(a, b);
+		selection_sort(a, b, bench);
 	else if (disorder < 0.5)
-		chunks_sort(a, b);
+		chunks_sort(a, b, bench);
 	else
-		radix_sort(a, b);
+		radix_sort(a, b, bench);
 }

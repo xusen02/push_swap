@@ -22,7 +22,7 @@ static int	bit_len_finder(int max)
 	return (len);
 }
 
-void	radix_sort(t_node **a, t_node **b)
+void	radix_sort(t_node **a, t_node **b, t_bench *bench)
 {
 	int	max_bit_len;
 	int	counter1;
@@ -36,12 +36,12 @@ void	radix_sort(t_node **a, t_node **b)
 		while (counter2--)
 		{
 			if (((*a)->index >> counter1) & 1)
-				ra(a);
+				ra(a, bench);
 			else
-				pb(a, b);
+				pb(a, b, bench);
 		}
 		while (get_stack_size(*b))
-			pa(a, b);
+			pa(a, b, bench);
 		counter1++;
 	}
 }

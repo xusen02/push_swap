@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_three(t_node **stack_a)
+void	sort_three(t_node **stack_a, t_bench *bench)
 {
 	int	max;
 
@@ -20,14 +20,14 @@ void	sort_three(t_node **stack_a)
 		return ;
 	max = find_max(*stack_a);
 	if ((*stack_a)->nbr == max)
-		ra(stack_a);
+		ra(stack_a, bench);
 	else if ((*stack_a)->down->nbr == max)
-		rra(stack_a);
+		rra(stack_a, bench);
 	if ((*stack_a)->nbr > (*stack_a)->down->nbr)
-		sa(stack_a);
+		sa(stack_a, bench);
 }
 
-void	sort_five(t_node **stack_a, t_node **stack_b)
+void	sort_five(t_node **stack_a, t_node **stack_b, t_bench *bench)
 {
 	int	min_index;
 	int	size;
@@ -40,17 +40,17 @@ void	sort_five(t_node **stack_a, t_node **stack_b)
 		if (min_index <= size / 2)
 		{
 			while (min_index--)
-				ra(stack_a);
+				ra(stack_a, bench);
 		}
 		else
 		{
 			rra_count = size - min_index;
 			while (rra_count--)
-				rra(stack_a);
+				rra(stack_a, bench);
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, bench);
 	}
-	sort_three(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	sort_three(stack_a, bench);
+	pa(stack_a, stack_b, bench);
+	pa(stack_a, stack_b, bench);
 }
