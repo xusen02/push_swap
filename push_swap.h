@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: txu-sen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/02 15:33:51 by txu-sen           #+#    #+#             */
-/*   Updated: 2026/09/02 15:33:53 by txu-sen          ###   ########.fr       */
+/*   Created: 2026/09/02 15:33:51 by txu-sen          #+#    #+#             */
+/*   Updated: 2026/09/02 15:33:53 by txu-sen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 # include <unistd.h>
-#include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_node
 {
@@ -27,7 +27,7 @@ typedef struct s_node
 
 typedef struct s_bench
 {
-	int 			active;
+	int				active;
 	int				sa;
 	int				sb;
 	int				pa;
@@ -50,16 +50,24 @@ int		is_valid(char *str);
 int		repeat_nbr(t_node *tung_tung, int nbr);
 int		in_nbr(int argc, char **argv, t_node **tung_tung);
 int		store_in(t_node *new_node, t_node **tung_tung);
-int		push_swap(int argc, char **argv, t_node **stack_a);
+int		push_swap(char **argv, t_node **stack_a);
 int		is_match(char *s1, char *s2);
 void	*ft_memset(void *b, int c, size_t len);
 void	free_stack(t_node **stack);
 t_node	*create_node(int nbr);
 
+/*one for all*/
+int		count_argv(char **argv);
+char	**ft_split(char const *s, char c);
+char	**process_argv(char **argv_alpha);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *s);
+
 /*bench_helpers*/
 void	calculate_disorder(t_node *stack_a, t_bench *bench);
 void	save_benchmark(t_bench *bench, char *strategy_name);
 void	write_bench_file(int fd, t_bench *bench, char *strategy_name);
+void	write_bench_file2(int fd, t_bench *bench);
 
 /* Stack Utilities & Sorting Logic */
 int		get_stack_size(t_node *stack);

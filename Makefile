@@ -32,7 +32,11 @@ SRC =   main.c \
         radix_sort.c \
         adaptive_sort.c \
         bench_writer.c \
-        bench_helper.c
+        bench_helper.c \
+        ft_split.c \
+        one_for_all.c \
+        bench_pen.c \
+        push_swap_utils2.c
 
 OBJ = $(SRC:.c=.o)
 

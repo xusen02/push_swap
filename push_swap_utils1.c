@@ -12,56 +12,44 @@
 
 #include "push_swap.h"
 
-int	store_in(t_node *new_node, t_node **tung_tung)
+static int	process_single_arg(char *arg, t_node **stack_a)
 {
-	t_node	*last;
+	int		nbr;
+	t_node	*new_node;
 
-	if (!*tung_tung)
+	if (!is_valid(arg))
 	{
-		*tung_tung = new_node;
-		new_node->up = NULL;
+		free_stack(stack_a);
+		return (1);
 	}
-	else
+	nbr = ft_atoi(arg);
+	if (repeat_nbr(*stack_a, nbr))
 	{
-		last = *tung_tung;
-		while (last->down)
-			last = last->down;
-		last->down = new_node;
-		new_node->up = last;
+		free_stack(stack_a);
+		return (1);
 	}
+	new_node = create_node(nbr);
+	if (!new_node)
+	{
+		free_stack(stack_a);
+		return (1);
+	}
+	store_in(new_node, stack_a);
 	return (0);
 }
 
-int in_nbr(int argc, char **argv, t_node **stack_a)
+int	in_nbr(int argc, char **argv, t_node **stack_a)
 {
-    int     i;
-    int     nbr;
-    t_node  *new_node;
+	int	i;
 
-    i = 1;
-    while (i < argc)
-    {
-        if (!is_valid(argv[i]))
-        {
-            free_stack(stack_a);
-            return (1);
-        }
-        nbr = ft_atoi(argv[i]);
-        if (repeat_nbr(*stack_a, nbr))
-        {
-            free_stack(stack_a);
-            return (1);
-        }
-        new_node = create_node(nbr);
-        if (!new_node)
-        {
-            free_stack(stack_a);
-            return (1);
-        }
-        store_in(new_node, stack_a);
-        i++;
-    }
-    return (0);
+	i = 1;
+	while (i < argc)
+	{
+		if (process_single_arg(argv[i], stack_a))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	get_stack_size(t_node *stack)

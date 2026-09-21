@@ -9,6 +9,7 @@
 /*   Updated: 2026/09/02 15:33:23 by txu-sen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 #include <stddef.h>
 #include <stdlib.h>
@@ -38,14 +39,30 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+static int	is_valid_number(char *str, int i, int sign)
+{
+	long	n;
+
+	n = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + (str[i] - '0');
+		if ((sign == 1 && n > 2147483647)
+			|| (sign == -1 && n > 2147483648))
+			return (0);
+		i++;
+	}
+	if (str[i] != '\0')
+		return (0);
+	return (1);
+}
+
 int	is_valid(char *str)
 {
-	int		i;
-	long	n;
-	int		sign;
+	int	i;
+	int	sign;
 
 	i = 0;
-	n = 0;
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -55,16 +72,7 @@ int	is_valid(char *str)
 	}
 	if (!str[i])
 		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if ((sign == 1 &&n > 2147483647) || (sign == -1 && n > -2147483648))
-			return (0);
-		n = n * 10 + (str[i] - '0');
-		i++;
-	}
-	if (str[i] != '\0')
-		return (0);
-	return (1);
+	return (is_valid_number(str, i, sign));
 }
 
 t_node	*create_node(int nbr)
@@ -79,17 +87,6 @@ t_node	*create_node(int nbr)
 	new_node->down = NULL;
 	new_node->up = NULL;
 	return (new_node);
-}
-
-int	repeat_nbr(t_node *stack_a, int nbr)
-{
-	while (stack_a)
-	{
-		if (stack_a->nbr == nbr)
-			return (1);
-		stack_a = stack_a->down;
-	}
-	return (0);
 }
 
 void	free_stack(t_node **stack)
