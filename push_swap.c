@@ -26,25 +26,27 @@ int	is_match(char *s1, char *s2)
 	return (s1[i] == s2[i]);
 }
 
-static void	parse_flags(int *argc, char ***argv, t_bench *bench, int *sort_type)
+static void parse_flags(int *argc, char ***argv, t_bench *bench, int *sort_type)
 {
-	*sort_type = 0;
-	bench->active = 0;
-	while (*argc > 1)
-	{
-		if (is_match((*argv)[1], "--bench"))
-			bench->active = 1;
-		else if (is_match((*argv)[1], "--simple"))
-			*sort_type = 1;
-		else if (is_match((*argv)[1], "--medium"))
-			*sort_type = 2;
-		else if (is_match((*argv)[1], "--complex"))
-			*sort_type = 3;
-		else
-			break ;
-		(*argv)++;
-		(*argc)--;
-	}
+    *sort_type = 0;
+    bench->active = 0;
+    while (*argc > 1)
+    {
+        if (is_match((*argv)[1], "--bench"))
+            bench->active = 1;
+        else if (is_match((*argv)[1], "--simple"))
+            *sort_type = 1;
+        else if (is_match((*argv)[1], "--medium"))
+            *sort_type = 2;
+        else if (is_match((*argv)[1], "--complex"))
+            *sort_type = 3;
+        else if (is_match((*argv)[1], "--adaptive"))
+            *sort_type = 4;
+        else
+            break ;
+        (*argv)++;
+        (*argc)--;
+    }
 }
 
 static void	execute_sort(int sort_type, t_node **stack_a, t_node **stack_b, t_bench *bench)
@@ -67,18 +69,21 @@ static char	*get_strategy_name(int sort_type)
 		return ("Medium / Chunk");
 	if (sort_type == 3)
 		return ("Complex / Radix");
-	return ("Adaptive / O(n\\sqrt{n})");
+	return ("Adaptive / O(n√n)");
 }
 
-int	push_swap(int argc, char **argv, t_node **stack_a)
+int push_swap(int argc, char **argv, t_node **stack_a)
 {
-	t_node	*stack_b;
-	int		sort_type;
-	t_bench	bench;
+	t_node  *stack_b;
+	int     sort_type;
+	t_bench bench;
 
 	stack_b = NULL;
 	ft_memset(&bench, 0, sizeof(t_bench));
 	parse_flags(&argc, &argv, &bench, &sort_type);
+	//printf("argc = %d\n", argc); //temp
+	//for (int i = 0; i < argc; i++)
+    	//printf("argv[%d] = [%s]\n", i, argv[i]); //
 	if (in_nbr(argc, argv, stack_a))
 	{
 		write(2, "Error\n", 6);

@@ -14,8 +14,7 @@
 void	sa(t_node **stack_a, t_bench *bench)
 {
 	do_sa(stack_a);
-	if (!bench->active)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 	bench->sa++;
 	bench->total_ops++;
 }
@@ -23,8 +22,7 @@ void	sa(t_node **stack_a, t_bench *bench)
 void	pa(t_node **stack_a, t_node **stack_b, t_bench *bench)
 {
 	do_pa(stack_a, stack_b);
-	if (!bench->active)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 	bench->pa++;
 	bench->total_ops++;
 }
@@ -32,8 +30,7 @@ void	pa(t_node **stack_a, t_node **stack_b, t_bench *bench)
 void	ra(t_node **stack_a, t_bench *bench)
 {
 	do_ra(stack_a);
-	if (!bench->active)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 	bench->ra++;
 	bench->total_ops++;
 }
@@ -41,8 +38,7 @@ void	ra(t_node **stack_a, t_bench *bench)
 void	rra(t_node **stack_a, t_bench *bench)
 {
 	do_rra(stack_a);
-	if (!bench->active)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 	bench->rra++;
 	bench->total_ops++;
 }

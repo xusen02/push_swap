@@ -73,30 +73,31 @@ static void	push_back_to_a(t_node **stack_a, t_node **stack_b, t_bench *bench)
 	}
 }
 
-void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench)
+void    chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench)
 {
-	int	size;
-	int	chunk_size;
-	int	min;
-	int	max;
+    int size;
+    int chunk_size;
+    int i;
 
-	size = get_stack_size(*stack_a);
-	chunk_size = get_chunk_size(size);
-	min = 0;
-	max = chunk_size;
-	while (*stack_a != NULL)
-	{
-		if ((*stack_a)->index < max)
-		{
-			pb(stack_a, stack_b, bench);
-			if ((*stack_b)->index < (min + max) / 2)
-				rb(stack_b, bench);
-			min++;
-			max++;
-		}
-		else
-			ra(stack_a, bench);
-	}
-	push_back_to_a(stack_a, stack_b, bench);
-	final_rotate_a(stack_a, bench);
+    size = get_stack_size(*stack_a);
+    chunk_size = get_chunk_size(size);
+    i = 0;
+    while (*stack_a != NULL)
+    {
+        if ((*stack_a)->index <= i)
+        {
+            pb(stack_a, stack_b, bench);
+            rb(stack_b, bench);
+            i++;
+        }
+        else if ((*stack_a)->index <= i + chunk_size)
+        {
+            pb(stack_a, stack_b, bench);
+            i++;
+        }
+        else
+            ra(stack_a, bench);
+    }
+    push_back_to_a(stack_a, stack_b, bench);
+    final_rotate_a(stack_a, bench);
 }

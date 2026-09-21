@@ -57,7 +57,7 @@ int	is_valid(char *str)
 		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if ((n * sign) > 2147483647 || (n * sign) < -2147483648)
+		if ((sign == 1 &&n > 2147483647) || (sign == -1 && n > -2147483648))
 			return (0);
 		n = n * 10 + (str[i] - '0');
 		i++;
