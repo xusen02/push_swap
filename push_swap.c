@@ -39,7 +39,7 @@ static void	execute_sort(int sort_type, t_node **stack_a,
 		t_node **stack_b, t_bench *bench)
 {
 	if (sort_type == 1)
-		selection_sort(stack_a, stack_b, bench);
+		insertion_sort(stack_a, stack_b, bench);
 	else if (sort_type == 2)
 		chunks_sort(stack_a, stack_b, bench);
 	else if (sort_type == 3)
@@ -51,7 +51,7 @@ static void	execute_sort(int sort_type, t_node **stack_a,
 static char	*get_strategy_name(int sort_type)
 {
 	if (sort_type == 1)
-		return ("Simple / Selection");
+		return ("Simple / insertion");
 	if (sort_type == 2)
 		return ("Medium / Chunk");
 	if (sort_type == 3)

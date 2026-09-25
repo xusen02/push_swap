@@ -24,7 +24,7 @@ SRC =   main.c \
         push_swap_command_a.c \
         push_swap_command_both.c \
         push_swap_command_b.c \
-		selection_sort.c \
+		insertion_sort.c \
         write_command_both.c \
         write_command_a.c \
         write_command_b.c \

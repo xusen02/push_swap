@@ -82,7 +82,7 @@ void	sort_three(t_node **stack_a, t_bench *bench);
 void	sort_five(t_node **stack_a, t_node **stack_b, t_bench *bench);
 void	radix_sort(t_node **a, t_node **b, t_bench *bench);
 void	adaptive_sort(t_node **a, t_node **b, t_bench *bench);
-void	selection_sort(t_node **a, t_node **b, t_bench *bench);
+void	insertion_sort(t_node **a, t_node **b, t_bench *bench);
 void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench);
 
 /* Operations */
