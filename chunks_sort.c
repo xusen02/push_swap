@@ -83,7 +83,7 @@ void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench)
 	int	chunk_size;
 	int	i;
 
-	chunk_size = get_chunk_size(ft_sqrt(size));
+	chunk_size = ft_sqrt(get_stack_size(*stack_a));
 	i = 0;
 	while (*stack_a != NULL)
 	{
