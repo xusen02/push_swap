@@ -68,6 +68,8 @@ void	calculate_disorder(t_node *stack_a, t_bench *bench);
 void	save_benchmark(t_bench *bench, char *strategy_name);
 void	write_bench_file(int fd, t_bench *bench, char *strategy_name);
 void	write_bench_file2(int fd, t_bench *bench);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(long n, int fd);
 
 /* Stack Utilities & Sorting Logic */
 int		get_stack_size(t_node *stack);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, i);
 }
 
-static void	ft_putnbr_fd(long n, int fd)
+void	ft_putnbr_fd(long n, int fd)
 {
 	char	c;
 

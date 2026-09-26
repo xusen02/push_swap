@@ -14,15 +14,14 @@
 
 void	push_chunks_to_b(t_node **a, t_node **b, t_bench *bench, int total_size)
 {
-	int i;
-	int chunk_size;
+	int	i;
+	int	chunk_size;
 
 	i = 0;
 	if (total_size <= 100)
 		chunk_size = 15;
 	else
 		chunk_size = 35;
-
 	while (*a)
 	{
 		if ((*a)->index <= i)
@@ -50,7 +49,6 @@ void	push_back_to_a(t_node **a, t_node **b, t_bench *bench)
 	{
 		max_pos = find_max_index(*b);
 		size = get_stack_size(*b);
-
 		if (max_pos <= size / 2)
 		{
 			while (max_pos > 0)
@@ -73,7 +71,7 @@ void	push_back_to_a(t_node **a, t_node **b, t_bench *bench)
 
 void	insertion_sort(t_node **a, t_node **b, t_bench *bench)
 {
-	int size;
+	int	size;
 
 	size = get_stack_size(*a);
 	if (size <= 1)
