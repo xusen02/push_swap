@@ -69,5 +69,5 @@ Helpful links, documentation, and conceptual guides for mastering `push_swap`:
 
 * **Official Documentation:**
 * 42 Subject PDF (Internal curriculum document detailing error management, edge cases, and mandatory norms).
-"""
-3. **Resources:** Provides curated links to popular guides, visualizers, and automated third-party tes
+
+* the friends and family weve met along the way
