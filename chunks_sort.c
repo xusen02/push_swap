@@ -12,11 +12,16 @@
 
 #include "push_swap.h"
 
-static int	get_chunk_size(int size)
+static int	ft_sqrt(int nb)
 {
-	if (size <= 100)
-		return (15);
-	return (35);
+	int	c;
+
+	c = 0;
+	if (nb <= 0)
+		return (0);
+	while (c * c < nb)
+		c++;
+	return (c);
 }
 
 static void	final_rotate_a(t_node **stack_a, t_bench *bench)
@@ -75,12 +80,10 @@ static void	push_back_to_a(t_node **stack_a, t_node **stack_b, t_bench *bench)
 
 void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench)
 {
-	int	size;
 	int	chunk_size;
 	int	i;
 
-	size = get_stack_size(*stack_a);
-	chunk_size = get_chunk_size(size);
+	chunk_size = get_chunk_size(ft_sqrt(size));
 	i = 0;
 	while (*stack_a != NULL)
 	{
