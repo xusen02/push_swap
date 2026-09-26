@@ -70,4 +70,4 @@ Helpful links, documentation, and conceptual guides for mastering `push_swap`:
 * **Official Documentation:**
 * 42 Subject PDF (Internal curriculum document detailing error management, edge cases, and mandatory norms).
 
-* the friends and family weve met along the way
+* **lastly:** the friends and family weve met along the way
