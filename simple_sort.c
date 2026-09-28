@@ -1,42 +1,14 @@
-void execute(t_node **a, t_node **b, t_node *cheapest) 
-{ 
-    int b_cost;
-    int a_cost;
+#include "push_swap.h"
 
-    b_cost = calc_cost(b, cheapest->nbr);
-    a_cost = calc_cost(a, find_a_position(a, cheapest->nbr));
-    if (b_cost > 0) 
-    { 
-        while (b_cost--) 
-            rb(a, b);
-    } 
-    else 
-    {
-        while (b_cost < 0) 
-            rrb(a, b);
-    }
-    if (a_cost > 0) 
-    {
-        while (a_cost--) 
-            ra(a, b);
-    }
-    else
-    {
-        while (a_cost < 0)
-            rra(a, b); 
-    }
-    pa(a, b);
- } 
- 
- int abs(int input) 
- { 
+int abs(int input) 
+{ 
     if (input > 0) 
         return (input);
     return (input * (-1));
- } 
+} 
  
- int calc_cost(t_node **stack, int nbr) 
- { 
+int calc_cost(t_node **stack, int nbr) 
+{ 
     int index;
     t_node  *current;
     
@@ -73,6 +45,36 @@ int find_a_position(t_node **a, int b)
     if (position)
         return (position->nbr);
     return (find_min(*a)); 
+}
+
+void execute(t_node **a, t_node **b, t_node *cheapest) 
+{ 
+    int b_cost;
+    int a_cost;
+
+    b_cost = calc_cost(b, cheapest->nbr);
+    a_cost = calc_cost(a, find_a_position(a, cheapest->nbr));
+    if (b_cost > 0) 
+    { 
+        while (b_cost--) 
+            rb(a, b);
+    } 
+    else 
+    {
+        while (b_cost < 0) 
+            rrb(a, b);
+    }
+    if (a_cost > 0) 
+    {
+        while (a_cost--) 
+            ra(a, b);
+    }
+    else
+    {
+        while (a_cost < 0)
+            rra(a, b); 
+    }
+    pa(a, b);
 } 
 
 void find_cheapest(t_node **a, t_node **b, t_cost *cost) 
