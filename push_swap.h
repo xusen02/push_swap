@@ -25,6 +25,14 @@ typedef struct s_node
 	struct s_node	*up;
 }				t_node;
 
+typedef struct s_cost
+{
+	int				cost_a;
+	int				cost_b;
+	int				total;
+	struct s_node	*cheapest;
+}				t_cost;
+
 typedef struct s_bench
 {
 	int				active;
