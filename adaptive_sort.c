@@ -19,7 +19,7 @@ void	adaptive_sort(t_node **a, t_node **b, t_bench *bench)
 		return ;
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
-		insertion_sort(a, b, bench);
+		simple_sort(a, b, bench);
 	else if (disorder < 0.5)
 		chunks_sort(a, b, bench);
 	else

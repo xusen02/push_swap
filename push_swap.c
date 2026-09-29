@@ -45,7 +45,7 @@ static void	execute_sort(int sort_type, t_node **stack_a,
 		t_node **stack_b, t_bench *bench)
 {
 	if (sort_type == 1)
-		insertion_sort(stack_a, stack_b, bench);
+		simple_sort(stack_a, stack_b, bench);
 	else if (sort_type == 2)
 		chunks_sort(stack_a, stack_b, bench);
 	else if (sort_type == 3)

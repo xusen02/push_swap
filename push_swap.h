@@ -82,6 +82,7 @@ void	ft_putnbr_fd(long n, int fd);
 /* Stack Utilities & Sorting Logic */
 int		get_stack_size(t_node *stack);
 int		is_sorted(t_node *a);
+int		positive(int input);
 int		find_max(t_node *a);
 int		find_min(t_node *a);
 int		find_min_index(t_node *stack);
@@ -92,7 +93,9 @@ void	sort_three(t_node **stack_a, t_bench *bench);
 void	sort_five(t_node **stack_a, t_node **stack_b, t_bench *bench);
 void	radix_sort(t_node **a, t_node **b, t_bench *bench);
 void	adaptive_sort(t_node **a, t_node **b, t_bench *bench);
-void	insertion_sort(t_node **a, t_node **b, t_bench *bench);
+void	simple_sort(t_node **a, t_node **b, t_bench *bench);
+void	run_b(t_node **b, t_bench *bench, int cost);
+void	run_a(t_node **a, t_bench *bench, int cost);
 void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench);
 
 /* Operations */
