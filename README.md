@@ -1,5 +1,4 @@
-# push_swap
-This project has been created as part of the 42 curriculum by [txu-sen] & [zyeo].
+*This project has been created as part of the 42 curriculum by [txu-sen] & [zyeo].*
 ## Description
 
 `push_swap` is an algorithmic project that challenges you to sort a stack of integers using a restricted set of stack operations with the minimum number of moves.

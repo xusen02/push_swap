@@ -58,12 +58,24 @@ char	**process_argv(char **argv_alpha)
 	char	*temp_str;
 	char	**to_return;
 	int		c;
+	char	*temp_str2;
 
 	temp_str = malloc(1);
+	if (!temp_str)
+		return (NULL);
 	temp_str[0] = '\0';
 	c = 0;
 	while (argv_alpha[c])
-		temp_str = ft_strjoin(temp_str, argv_alpha[c++]);
+	{
+		temp_str2 = ft_strjoin(temp_str, argv_alpha[c++]);
+		if (!temp_str2)
+		{
+			free(temp_str);
+			return (NULL);
+		}
+		free(temp_str);
+		temp_str = temp_str2;
+	}
 	to_return = ft_split(temp_str, ' ');
 	free(temp_str);
 	return (to_return);

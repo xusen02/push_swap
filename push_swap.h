@@ -66,7 +66,7 @@ t_node	*create_node(int nbr);
 
 /*one for all*/
 int		count_argv(char **argv);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *str, char c);
 char	**process_argv(char **argv_alpha);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
@@ -97,6 +97,7 @@ void	simple_sort(t_node **a, t_node **b, t_bench *bench);
 void	run_b(t_node **b, t_bench *bench, int cost);
 void	run_a(t_node **a, t_bench *bench, int cost);
 void	chunks_sort(t_node **stack_a, t_node **stack_b, t_bench *bench);
+void	free_argv(char **argv);
 
 /* Operations */
 void	sa(t_node **stack_a, t_bench *bench);

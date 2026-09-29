@@ -101,11 +101,14 @@ int	push_swap(char **argv_alpha, t_node **stack_a)
 	ft_memset(&bench, 0, sizeof(t_bench));
 	argv = process_argv(argv_alpha);
 	argc = count_argv(argv);
+	argv_alpha = argv;
 	sort_type = parse_flags(&argc, &argv, &bench, &count_only);
 	if (in_nbr(argc, argv, stack_a))
 	{
 		write(2, "Error\n", 6);
+		free_argv(argv_alpha);
 		return (1);
 	}
+	free_argv(argv_alpha);
 	return (handle_sorting(stack_a, sort_type, &bench, count_only));
 }

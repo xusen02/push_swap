@@ -56,3 +56,13 @@ int	is_match(char *s1, char *s2)
 	}
 	return (s1[i] == s2[i]);
 }
+
+void	free_argv(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv);
+}
